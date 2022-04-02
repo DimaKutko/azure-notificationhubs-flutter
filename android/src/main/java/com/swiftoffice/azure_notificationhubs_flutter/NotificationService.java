@@ -38,6 +38,7 @@ public class NotificationService extends FirebaseMessagingService {
     public static final String EXTRA_REMOTE_MESSAGE =
             "com.swiftoffice.azure_notificationhubs_flutter.NOTIFICATION_DATA";
     public static final String EXTRA_TOKEN = "com.swiftoffice.azure_notificationhubs_flutter.TOKEN_DATA";
+    public static final int FLAG_MUTABLE = 33554432;
 
     private NotificationManager mNotificationManager;
     private static Context ctx;
@@ -63,7 +64,7 @@ public class NotificationService extends FirebaseMessagingService {
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             mNotificationManager = (NotificationManager) ctx.getSystemService(Context.NOTIFICATION_SERVICE);
             PendingIntent contentIntent = PendingIntent.getActivity(ctx, 0,
-                intent, PendingIntent.FLAG_ONE_SHOT);
+                intent, FLAG_MUTABLE | PendingIntent.FLAG_ONE_SHOT );
             Resources resources = ctx.getPackageManager().getResourcesForApplication(packageName);
             int resId = resources.getIdentifier("ic_launcher", "mipmap", packageName);
             Drawable icon = resources.getDrawable(resId);
