@@ -8,9 +8,9 @@ import android.util.Log;
 
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.microsoft.windowsazure.messaging.NotificationHub;
 
 import java.math.BigInteger;
@@ -32,12 +32,8 @@ public class RegistrationIntentService extends IntentService {
         String resultString = null;
         String regID = null;
         try {
-            FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(new OnSuccessListener < InstanceIdResult > () {
-                @Override
-                public void onSuccess(InstanceIdResult instanceIdResult) {
-                    FCM_token = instanceIdResult.getToken();
-                }
-            });
+            FirebaseMessaging.getInstance().getToken().addOnSuccessListener(s -> FCM_token = s);
+
             TimeUnit.SECONDS.sleep(1);
             String sha1 = "";
             try {
