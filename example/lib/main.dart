@@ -26,7 +26,7 @@ class _MyAppState extends State<MyApp> {
             subtitle: Text(notification['data']['body']),
             ),
             actions: <Widget>[
-              FlatButton(
+              TextButton(
                 child: Text('Ok'),
                 onPressed: () => Navigator.of(context).pop(),
               ),

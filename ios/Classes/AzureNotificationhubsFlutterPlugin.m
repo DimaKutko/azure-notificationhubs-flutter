@@ -27,12 +27,12 @@
 
 - (void)handleMethodCall:(FlutterMethodCall*)call result:(FlutterResult)result {
   if ([@"configure" isEqualToString:call.method]) {
-    [self handleRegister];
-    if (_launchNotification != nil) {
-      [_channel invokeMethod:@"onLaunch" arguments:_launchNotification];
-    }
-    result(nil);
-  } else {
+    // [self handleRegister]; 
+    // if (_launchNotification != nil) {
+      // [_channel invokeMethod:@"onLaunch" arguments:_launchNotification];
+    // }
+    // result(nil);
+  } else {у
     result(FlutterMethodNotImplemented);
   }
 }
